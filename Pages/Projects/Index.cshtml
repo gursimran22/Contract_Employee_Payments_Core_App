@@ -1,0 +1,43 @@
+﻿@page
+@model Contract_Employee_Payments_Core_App.Pages.Projects.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Projects </h1>
+
+<p>
+    <a class="btn btn-warning" asp-page="Create">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].ProjectName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].EstimatedHours)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Project) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimatedHours)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-warning" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
